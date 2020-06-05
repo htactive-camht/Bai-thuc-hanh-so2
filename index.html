@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Todo App</title>
+    <title>Bai-thuc-hanh-so-2</title>
     <!-- <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'> -->
     <link
       rel="stylesheet"
@@ -9,22 +9,160 @@
       media="screen"
       charset="utf-8"
     />
+    
   </head>
   <body>
     <div class="container">
-      <h2>Freetuts.net hướng dẫn tạo To Do List</h2>
-
-      <div id="myDIV" class="header">
-        <h2 style="margin: 5px;">Danh sách những việc cần làm trong năm</h2>
-        <input type="text" id="myInput" placeholder="Title..." />
-        <span onclick="newElement()" class="addBtn">Thêm</span>
+      <!-- to do -->
+      <div class="todo" style="margin-left: 10px;">
+        
+        <div>
+          <h2>To Do</h2>  
+          <button type="button" id="btn-top" onclick="modelTop()">...</button>
+        </div>
+        <ul id="list-todo">
+          <li id=>
+            <span onclick="showModal('todo', 1, 'decss test')" id="todo-1">dsadsadsad</span>
+            <span class="close" onclick="deleteTask('todo', 1)">×</span>
+          </li>
+          <!-- <li class="custom-li">
+            <button onclick="showModal()" class="custom-btn" style="width: 100%;">Task 1</button>
+          </li> -->
+        </ul>
+        <div id="myDIV" class="header">
+         
+          <input type="text" id="new-task-todo" placeholder="Thêm task mới" />
+          <span onclick="addList('list-todo','new-task-todo','span-todo','orther-todo')" id="span-todo" class="btn"
+            >Add</i
+          ></span>
+        </div>
+        <span onclick="showInputAdd('new-task-todo','span-todo')" class="btn-orther" id="orther-todo"
+          ><i class="fa fa-plus" aria-hidden="true">Add another card</i></span
+        >
+        
       </div>
 
-      <ul id="myUL">
-        <li class="checked">Task 1</li>
-        <li>Task 2</li>
-      </ul>
+      <!-- Doing -->
+      <div class="todo" style="margin-left: 10px;">
+        
+        <div>
+          <h2>Doing</h2>  
+          <button type="button" id="btn-top" onclick="modelTop()">...</button>
+        </div>
+        <ul id="list-doing" onclick="evenListener('list-doing','id01','nameTask')">
+          <!-- <li onclick="evenListener('list-doing','id01','nameTask')"></li> -->
+          <!-- <li class="custom-li">
+            <button onclick="showModal()" class="custom-btn" style="width: 100%;">Task 1</button>
+          </li> -->
+        </ul>
+        <div id="myDIV" class="header">
+         
+          <input type="text" id="new-task-doing" placeholder="Thêm task mới" />
+          <span onclick="addList('list-doing','new-task-doing','span-doing','orther-doing')" id="span-doing" class="btn"
+            >Add</i
+          ></span>
+        </div>
+        <span onclick="showInputAdd('new-task-doing','span-doing')" class="btn-orther" id="orther-doing"
+          ><i class="fa fa-plus" aria-hidden="true">Add another card</i></span
+        >
+        
+      </div>
+
+      <!-- Verify -->
+      <div class="todo" style="margin-left: 10px;">
+        
+        <div>
+          <h2>Verify</h2>  
+          <button type="button" id="btn-top" onclick="modelTop()">...</button>
+        </div>
+        <ul id="list-verify" onclick="evenListener('list-verify','id01','nameTask')">
+          <!-- <li class="custom-li">
+            <button onclick="showModal()" class="custom-btn" style="width: 100%;">Task 1</button>
+          </li> -->
+        </ul>
+        <div id="myDIV" class="header">
+         
+          <input type="text" id="new-task-verify" placeholder="Thêm task mới" />
+          <span onclick="addList('list-verify','new-task-verify','span-verify','orther-verify')" id="span-verify" class="btn"
+            >Add</i
+          ></span>
+        </div>
+        <span onclick="showInputAdd('new-task-verify','span-verify')" class="btn-orther" id="orther-verify"
+          ><i class="fa fa-plus" aria-hidden="true">Add another card</i></span
+        >
+        
+      </div>
+
+
+      <!-- Done -->
+      <div class="todo" style="margin-left: 10px;">
+        
+        <div>
+          <h2>Done</h2>  
+          <button type="button" id="btn-top" onclick="modelTop()">...</button>
+        </div>
+        <ul id="list-done" onclick="evenListener('list-done','id01','nameTask')">
+          <!-- <li class="custom-li">
+            <button onclick="showModal()" class="custom-btn" style="width: 100%;">Task 1</button>
+          </li> -->
+        </ul>
+        <div id="myDIV" class="header">
+         
+          <input type="text" id="new-task-done" placeholder="Thêm task mới" />
+          <span onclick="addList('list-done','new-task-done','span-done','orther-done')" id="span-done" class="btn"
+            >Add</i
+          ></span>
+        </div>
+        <span onclick="showInputAdd('new-task-done','span-done')" class="btn-orther" id="orther-done"
+          ><i class="fa fa-plus" aria-hidden="true">Add another card</i></span
+        >
+        
+      </div>
+
+      <!-- Modal -->
+    <div id="id01" class="modal">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <form class="modal-content">
+        <div class="container">
+          <h1 id="nameTask"></h1>
+          <div class="description">
+            <label>Description:</label> 
+            <div id="getDescription"></div>
+          </div>
+          <div class="activity">
+            <label>Activities:</label>
+          </div>
+          </div>
+        
+          <div class="clearfix">
+            <button type="button" class="cancelbtn" onclick="cancel('id01')" >Cancel</button>
+            <button type="button" class="deletebtn">Delete</button>
+          </div>
+      </form>
     </div>
+    
+<!-- Top model -->
+    <div class="modal" id="modelTop">
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+               <h4 class="modal-title">Modal Heading</h4>
+               <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+               Modal body..
+            </div>
+            <div class="clearfix">
+              <button type="button" id="btn-cancel" class="cancelbtn" onclick="cancel()" >Cancel</button>
+            </div>
+         </div>
+      </div>
+   </div>
+
+
   </body>
   <script type="text/javascript" src="index.js"></script>
+  
 </html>
